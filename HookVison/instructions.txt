@@ -1,0 +1,13 @@
+
+Instruções para lembrar quando for dada manutenção neste projeto.
+
+
+1) praticamente todas as referências a aquivos ou rotas são da sequinte forma:
+  ['yy.xx'] nesses casos, yy é o nome do blueprint/route e xx é o nome da função.
+
+   Exemplos:
+    redirect(url_for('login.index'))
+    request.endpoint in ['cadastro.register']
+
+
+2)

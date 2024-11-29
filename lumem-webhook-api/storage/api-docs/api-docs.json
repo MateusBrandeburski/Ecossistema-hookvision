@@ -1,0 +1,82 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "WebHook - Lumen",
+        "contact": {
+            "name": "Support Team",
+            "email": "mateus.brandeburski92@gmail.com"
+        },
+        "version": "1.0"
+    },
+    "paths": {
+        "/web-hook": {
+            "post": {
+                "tags": [
+                    "Pagamentos"
+                ],
+                "summary": "Envia dados de pagamento",
+                "operationId": "webHook",
+                "requestBody": {
+                    "description": "Dados do pagamento",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nome",
+                                    "email",
+                                    "status",
+                                    "valor",
+                                    "forma_pagamento",
+                                    "parcelas"
+                                ],
+                                "properties": {
+                                    "nome": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "valor": {
+                                        "type": "string"
+                                    },
+                                    "forma_pagamento": {
+                                        "type": "string"
+                                    },
+                                    "parcelas": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    },
+                    "400": {
+                        "description": "Erro: Requisição inválida"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

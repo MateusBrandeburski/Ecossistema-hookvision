@@ -1,0 +1,122 @@
+
+.logo-nav{
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.nav-link{
+  color: rgb(71, 71, 71);
+}
+
+.title-nav{
+ font-size: 20px;
+}
+
+.container-navbar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 5px;
+    padding: 0;
+}
+
+.no-results{
+  text-align: center;
+}
+
+.canto-esquerdo {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  color: rgb(71, 71, 71);
+  font-weight: bold;
+}
+
+.total-base{
+  all: unset;
+  font-size: small;
+}
+
+
+.canto-direito-nav{
+  display: flex; /* Faz os itens ficare um ao lado do outro */  
+  justify-content: end;
+}
+
+
+.container-graficos {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  gap: 20px; 
+  margin-bottom: 30px;
+  padding: 0;
+}
+
+.grid1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 3px;
+}
+
+.grid4{
+  background-color: rgb(255, 255, 255);
+  border-radius: 3px;
+  justify-content: center;
+}
+
+.card-grafico1 {
+  background-color: rgb(255, 255, 255);
+  border-radius: 3px;
+  text-align: center;
+  color: rgb(71, 71, 71);
+  font-weight: bold;
+}
+
+.card-grafico {
+  background-color: rgb(255, 255, 255);
+  border-radius: 3px;
+
+} 
+
+
+/* itens acima da tabela */
+.container-cabecalho-tabela {
+  display: flex; 
+  justify-content: space-between; 
+  margin-bottom: 5px;
+  padding: 0;
+}
+
+.card-total-registros{
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding-left: 5px;
+  height: 40px;
+  margin-top: 7px;
+  border-radius: 3px;
+  color: rgb(71, 71, 71);
+  font-weight: bold;
+}
+
+.no-border-animation:focus, 
+.no-border-animation:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.no-border-animation {
+  transition: none !important;
+}
+
+.img-db{
+  width: 25px;
+  height: 25px;
+}
+
+.btn-table {
+  font-weight: bold;
+}

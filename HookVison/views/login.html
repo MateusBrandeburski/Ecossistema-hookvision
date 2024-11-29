@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HookVision</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/santa.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
+<link rel="icon" href="{{ url_for('static', filename='image/webhook-logo2.jpg') }}">
+
+</head>
+<body class="bd-masthead mb-3" style="background-color:#205e88;">
+
+
+<header class="d-flex align-items-center justify-content-center">
+  <div class="p-1 shadow bg-white text-center">
+    <img src="{{ url_for('static', filename='image/webhook-logo2.jpg') }}" alt="logo-webhook" style="width: 10%; height: 10%;">
+    <div class="container">
+        <h1 style="font-family: 'Roboto Slab', serif;">HookVision</h1>
+        <p style="font-family: 'Roboto Slab', serif;">{{_('subtitle_login')}}</p>
+    </div>
+    
+    <div class="btn-group">
+      <img id="pathIMG" alt="bandeira" width="35"/>
+      <button type="button" class="btn dropdown-toggle no-border-animation" data-bs-toggle="dropdown" aria-expanded="false" id="languageButton">
+        <img id="pathIMG" alt="bandeira" width="20" class="ms-2"/>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-center">
+        <li>
+          <form action="{{ url_for('langs.change_language') }}" method="POST">
+            <button type="submit" name="language" value="pt_BR" class="dropdown-item" onclick="changeLanguage('pt_BR', 'Português', 'pt')">
+              <img src="{{ url_for('static', filename='image/br.png') }}" alt="Flag" width="20" class="me-2" />
+              Português
+            </button>
+          </form>
+        </li>
+        <li>
+          <form action="{{ url_for('langs.change_language') }}" method="POST">
+            <button type="submit" name="language" value="en" class="dropdown-item" onclick="changeLanguage('en', 'English', 'us')">
+              <img src="{{ url_for('static', filename='image/us.png') }}" alt="Flag" width="20" class="me-2" />
+              English
+            </button>
+          </form>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+  
+</header>
+
+<img id="santa" src="{{ url_for('static', filename='image/santa-sleigh-1.gif') }}" alt="Santa Sleigh" class="gif">
+
+{% block conteudo %} 
+{% endblock %}
+
+
+<footer class="footer d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top text-white">
+    <div class="col-md-4 d-flex align-items-center">
+      <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+        <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+      </a>
+      <span class="mb-3 mb-md-0 text-white"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© 2023 Mateus Brandeburski Ramos</font></font></span>
+    </div>
+      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <li class="ms-3"><a target="_blank" class="text-muted" href="https://github.com/MateusBrandeburski"><img src="https://img.icons8.com/glyph-neue/30/FFFFFF/github.png"/></a></li>
+      <li class="ms-3"><a target="_blank" class="text-muted" href="https://www.linkedin.com/in/mateus-brandeburski-001ba7202/"><img src="https://img.icons8.com/ios-filled/30/FFFFFF/linkedin.png"/></a></li>
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+    </ul>
+</footer>
+
+<script>
+
+  function changeButtonText(newText) {
+    const button = document.getElementById('languageButton');
+    button.textContent = newText;
+  }
+
+  function imgButton(img){
+    const button = document.getElementById('pathIMG');
+    button.src = img;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const initialLanguage = "{{ lang }}";
+
+    const languageMap = {
+      "pt_BR": "Português",
+      "en": "English",
+    };
+
+    const flagMap = {
+      "pt_BR": "{{ url_for('static', filename='image/br.png') }}",  
+      "en": "{{ url_for('static', filename='image/us.png') }}", 
+    };
+
+    changeButtonText(languageMap[initialLanguage]);
+    imgButton(flagMap[initialLanguage]);
+
+  });
+
+</script>
+<script src="{{ url_for('static', filename='js/santa.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

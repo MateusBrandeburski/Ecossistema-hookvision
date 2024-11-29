@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="{{ g.locale }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HookVision</title>
+
+<link rel="preload" href="{{ url_for('static', filename='js/graficoPagamentos.js') }}"importance="high">
+<link rel="preload" href="{{ url_for('static', filename='js/graficoTotal.js') }}"importance="high">
+<link rel="preload" href="{{ url_for('static', filename='js/graficoLucroPerdas.js') }}"importance="high">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}" importance="high">
+<link rel="icon" href="{{ url_for('static', filename='image/webhook-logo2.jpg') }}">
+
+</head>
+<body class="bd-masthead mb-3" style="background-color: #205e88;">
+<!-- Header -->
+<header class="bg-white p-1 shadow">
+      <nav class="container-navbar">
+        <div class="canto-esquerdo">
+            <img class="logo-nav" src="{{ url_for('static', filename='image/webhook-logo2.jpg') }}" alt="logo-webhook">
+            <span class="title-nav">HookVision 3.0</span>
+          </a>
+        </div>
+        
+        <div class="canto-direito-nav">
+
+          <div class="btn-group">
+
+
+            <img id="pathIMG" alt="bandeira" width="35"/>
+
+            <button type="button" class="btn dropdown-toggle no-border-animation" data-bs-toggle="dropdown" aria-expanded="false" id="languageButton">
+              <img id="pathIMG" src="" alt="bandeira" width="20" class="ms-2"/>
+            </button>
+
+
+            <ul class="dropdown-menu">
+              <li>
+                <form action="{{ url_for('langs.change_language') }}" method="POST">
+                  <button type="submit" name="language" value="pt_BR" class="dropdown-item" onclick="changeLanguage('pt_BR', 'Português', 'pt')">
+                    <img src="{{ url_for('static', filename='image/br.png') }}" alt="Flag" width="20" class="me-2" />
+                    Português
+                  </button>
+                </form>
+              </li>
+              <li>
+                <form action="{{ url_for('langs.change_language') }}" method="POST">
+                  <button type="submit" name="language" value="en" class="dropdown-item" onclick="changeLanguage('en', 'English', 'us')">
+                    <img src="{{ url_for('static', filename='image/us.png') }}" alt="Flag" width="20" class="me-2" />
+                    English
+                  </button>
+                </form>
+              </li>
+            </ul>
+          </div>
+
+       
+          <a class="fw-bold nav-link" href="{{url_for('login.logout')}}">{{_("sair")}}</a>
+
+        </div> 
+      </nav>
+</header>
+
+
+<!-- Para separar o arquivo de execução do JavaScript é preciso criar um endpoint que envie a lang atual para o JS | O modelo atual pega o valor do lang usando jinja2 -->
+<script>
+  function changeButtonText(newText) {
+    const button = document.getElementById('languageButton');
+    button.textContent = newText;
+  }
+
+  function imgButton(img){
+    const button = document.getElementById('pathIMG');
+    button.src = img;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const initialLanguage = "{{ lang }}";
+    console.log(initialLanguage)
+
+    const languageMap = {
+      "pt_BR": "Português",
+      "en": "English",
+    };
+
+    const flagMap = {
+      "pt_BR": "{{ url_for('static', filename='image/br.png') }}",  
+      "en": "{{ url_for('static', filename='image/us.png') }}", 
+    };
+
+    changeButtonText(languageMap[initialLanguage]);
+
+    imgButton(flagMap[initialLanguage]);
+
+  });
+</script>
+
+<!-- fim Header -->
+{% block conteudo %}
+{% endblock %}
+
+<!-- Footer -->
+<footer class="footer d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top text-white">
+  <div class="col-md-4 d-flex align-items-center">
+      <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+          <svg class="bi" width="30" height="24"></svg>
+      </a>
+      <span class="mb-3 mb-md-0 text-white">© {{_('desenvolvido')}} 2022 | {{_('atualizado')}} 2024 | Mateus Brandeburski</span>
+  </div>
+  <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <li class="ms-3"><a target="_blank" class="text-muted" href="https://github.com/MateusBrandeburski"><img src="https://img.icons8.com/glyph-neue/30/FFFFFF/github.png"/></a></li>
+      <li class="ms-3"><a target="_blank" class="text-muted" href="https://www.linkedin.com/in/mateus-brandeburski-001ba7202/"><img src="https://img.icons8.com/ios-filled/30/FFFFFF/linkedin.png"/></a></li>
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+  </ul>
+</footer>
+<!-- fim dp footer -->
+
+
+
+<script src="{{ url_for('static', filename='js/graficoPagamentos.js') }}" importance="high"></script>
+<script src="{{ url_for('static', filename='js/graficoTotal.js') }}" importance="high"></script>
+<script src="{{ url_for('static', filename='js/graficoLucroPerdas.js') }}" importance="high"></script>
+<script src="{{ url_for('static', filename='js/api/total30.js') }}" importance="high"></script>
+<script src="{{ url_for('static', filename='js/api/dataTable.js') }}" importance="high"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="{{ url_for('static', filename='js/languageSwitcher.js') }}" importance="high"></script> -->
+</body>
+</html>

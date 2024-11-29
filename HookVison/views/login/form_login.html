@@ -1,0 +1,74 @@
+{% extends 'login.html' %}
+{% block conteudo %}
+
+
+<div class="container p-5" style="margin-top: 50px">
+    <div class="row gx-5 align-items-center justify-content-center">
+        <div class="col-md-5">
+        <!-- inicio Mensagem de logado ou não logado -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %} 
+                <ul id="messages" class="list-unstyled">
+                {% for message in messages %}
+                  {% if message == 'testesss' %}
+                    <li class="alert alert-success">{{ message }}</li>
+                  {% else %}
+                    <li class="alert alert-danger">{{ message }}</li>
+                  {% endif %}
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <!-- fim Mensagem de logado ou não logado -->
+        <h1 class="text-white text-center">Login</h1>
+        <form method="POST" action="/autenticar">
+            <p class="text-white">
+              <label>Email</label>
+              <input  value="mateus@proton.com" class="form-control" type="text" id="email" name="email" required>
+            </p>
+            <p class="text-white"><label>{{_('senha_login')}}</label> <input value="Developer12@" class="form-control" type="password" name="senha" required></p>
+            <div class="d-flex justify-content-between">
+              <p class="text-white"><button class="btn btn-primary" type="submit">{{_('entrar_login')}}</button></p>
+              <p class="text-white btn btn-primary"><a class="text-white" style="text-decoration: none;" href="{{url_for('cadastro.register')}}">{{_('cadastro_login')}}</a></p>
+            </div>
+
+            <div class="accordion" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button style="font-family: 'Roboto Slab', serif;" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    {{_('info1_title_login')}}
+                  </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <p class="card-text mb-3">{{_('info1_content1_login')}}</p>
+                    <!-- <p class="card-text mb-3">Os registros são salvos no banco de dados e podem ser visualizados ao fazer login na página.</p> -->
+                    <div class="mb-3">
+                        <span class="font-weight-bold text-secondary">Login:</span>
+                        <div class="bg-light p-2 rounded">
+                            Email: <span class="p-1 rounded">mateus@proton.com</span><br>
+                            {{_('senha_login')}}:<span class="p-1 rounded">Developer12@</span>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button style="font-family: 'Roboto Slab', serif;" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    {{_('info2_title_login')}}
+                  </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                   <p class="card-text">{{_('info2_content1_login')}} <span class="text-white bg-secondary p-1 rounded">trueADM</span> {{_('info2_content2_login')}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

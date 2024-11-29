@@ -1,0 +1,147 @@
+# English translations for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-11-16 12:22-0300\n"
+"PO-Revision-Date: 2024-11-16 12:22-0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+
+msgid "sair"
+msgstr "Logout"
+
+msgid "info"
+msgstr "Informations"
+
+msgid "Transações nos últimos 30 dias"
+msgstr "Transactions in the last 30 days"
+
+msgid "Status no Sistema"
+msgstr "System Status"
+
+msgid "Buscar"
+msgstr "Search"
+
+msgid "Nenhum registro encontrado."
+msgstr "No records found."
+
+msgid "Nome"
+msgstr "Name"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Status da transação"
+msgstr "Transaction Status"
+
+msgid "Status no sistema"
+msgstr "System Status"
+
+msgid "Valor"
+msgstr "Amount"
+
+msgid "Forma de pagamento"
+msgstr "Payment Method"
+
+msgid "Parcelas"
+msgstr "Installments"
+
+msgid "Data e hora"
+msgstr "Date and Time"
+
+msgid "Anterior"
+msgstr "Previous"
+
+msgid "Próximo"
+msgstr "Next"
+
+msgid "desenvolvido"
+msgstr "Developed in"
+
+msgid "atualizado"
+msgstr "Updated"
+
+msgid "lang"
+msgstr "Language"
+
+msgid "acesso_bloqueado"
+msgstr "Blocked"
+
+msgid "acesso_liberado"
+msgstr "Released"
+
+msgid "acesso_negado"
+msgstr "Denied"
+
+msgid "recusado"
+msgstr "Refused"
+
+msgid "aprovado"
+msgstr "Approved"
+
+msgid "reembolsado"
+msgstr "Refunded"
+
+msgid "title_card2"
+msgstr "Billing and Losses"
+
+msgid "title_card3"
+msgstr "Transaction Movement"
+
+msgid "sub_card3"
+msgstr "Quantity of Transactions"
+
+msgid "tooltip_card3"
+msgstr "Transactions"
+
+msgid "subtitle_login"
+msgstr "Webhook Payment Viewer"
+
+msgid "logout_login"
+msgstr "Logout successfully performed"
+
+msgid "senha_login"
+msgstr "Password"
+
+msgid "entrar_login"
+msgstr "Enter"
+
+msgid "cadastro_login"
+msgstr "Register"
+
+msgid "info1_title_login"
+msgstr "Start here!"
+
+msgid "info1_content1_login"
+msgstr "HookVison is not just a graphical interface. It receives, validates and persists records of received payments."
+
+msgid "info2_title_login"
+msgstr "Information about registration"
+
+msgid "info2_content1_login"
+msgstr "Login system is working, use token"
+
+msgid "info2_content2_login"
+msgstr "to create."
+
+msgid "cadastro"
+msgstr "Register"
+
+msgid "cadastrar"
+msgstr "register"
+
+msgid "confirmar_senha"
+msgstr "Confirm password"
+

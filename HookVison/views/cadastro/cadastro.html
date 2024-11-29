@@ -1,0 +1,52 @@
+{% extends 'home.html' %}
+{% block conteudo %}
+
+<!-- div meio -->
+<div class="p-5">
+    <div class="container px-2">
+      <div class="row gx-1 align-items-center justify-content-center">
+        <div class="col-md-5">
+          
+        <!-- Mensagem Flash -->
+        {% with messages = get_flashed_messages() %}
+          {% if messages %} 
+              <ul id="messages" class="list-unstyled">
+              {% for message in messages %}
+                  {% if message %}
+                     <li class="alert alert-danger"><p>{{ message }}</li>
+                  {% endif %}
+               {% endfor %}
+               </ul>
+           {% endif %}
+       {% endwith %}
+       <!-- fim Mensagem Flash -->
+       
+          <h1 class="text-white mt-5">{{_('cadastro')}}</h1>
+          <form action="/processa-cadastro" method="POST">
+    
+            <p class="text-white"><label>Email</label>
+                <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2" id="email" name="email" required></p>
+    
+              <p class="text-white"><label>{{_('senha_login')}}</label>
+              <input type="password" class="form-control" pattern=".{8,}$" aria-describedby="basic-addon2" id="senha" name="senha" title="8 caracteres, contendo pelo menos um dígito, uma letra minúscula, uma letra maiúscula e um caractere especial" required></span>
+              </p>
+    
+              <p class="text-white"><label>{{_('confirmar_senha')}}</label>
+              <input class="form-control" type="password" id="confirma_senha" name="confirma_senha" required>
+            
+              <p class="text-white"><label>Token</label>
+                <input class="form-control" type="string" id="token" name="token" required>
+                
+              <div class="col-xs-12 mt-2 text-end">
+                <button type="submit" class="btn btn-primary">{{_('cadastrar')}}</button>
+              </div>
+          </form>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}

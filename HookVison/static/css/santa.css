@@ -1,0 +1,33 @@
+
+.gif {
+    position: absolute;
+    animation: fly-reverse 8s linear infinite;
+}
+
+
+@keyframes fly-reverse {
+    0% {
+    left: 80vw; /* Começa fora da tela à direita */
+    top: 50vh;   /* Posição inicial vertical */
+    opacity: 0;
+    }
+    25% {
+    top: 40vh;   /* Sobe um pouco */
+    opacity: 1;
+    }
+    50% {
+    left: 50vw;  /* Passa pelo centro horizontal */
+    top: 60vh;   /* Desce um pouco */
+    opacity: 0;
+    }
+    75% {
+    top: 40vh;   /* Sobe novamente */
+    opacity: 0.5;
+    }
+    100% {
+    left: -100px; /* Sai da tela pela esquerda */
+    top: 50vh;   /* Retorna à posição inicial vertical */
+    opacity: 0;   /* Totalmente invisível */
+    }
+}
+
