@@ -1,33 +1,43 @@
 from flask import Flask, session
-from flask_babel import Babel, _
-from classes.database.database import db
+from flask_babel import Babel
+from flask_migrate import Migrate
+from database.database import db
 from datetime import timedelta
+import click
+from flask.cli import with_appcontext
 import os
 
-app = Flask(__name__, template_folder='views')
-
-# secret_key
-app.secret_key = "M4T3usBrnd3"
-app.permanent_session_lifetime = timedelta(minutes=1440)
-
-# Configuração do Flask-Babel
-app.config['BABEL_DEFAULT_LOCALE'] = 'en'  
-app.config['BABEL_SUPPORTED_LOCALES'] = ['pt_BR', 'en']  
-
-babel = Babel(app)
-
-def get_locale():
-    return session.get('lang', 'en')
-
-
 def create_app():
-    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://root:nununflask12@db:5432/webhook"
+    app = Flask(__name__, template_folder='views')
+    app.secret_key = "M4T3usBrnd3"
+    app.permanent_session_lifetime = timedelta(minutes=1440)
+
+
+    app.config['BABEL_DEFAULT_LOCALE'] = 'en'  
+    app.config['BABEL_SUPPORTED_LOCALES'] = ['pt_BR', 'en']  
+    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://root:nununflask12@localhost:5432/webhook"
+
     db.init_app(app)
+    migrate = Migrate(app, db)
+
+
+    @click.command("seed-db")
+    @with_appcontext
+    def seed_db_command():
+        """Popula o banco de dados com dados iniciais."""
+        from seeders.seed import seed 
+        seed()
+        
+    app.cli.add_command(seed_db_command)
+    
+
+    babel = Babel(app)
+    def get_locale():
+        return session.get('lang', 'en')
     
     babel.init_app(app, locale_selector=get_locale)
-    """
-        Não é esteticamente lindo, mas aparentemente é mais performático. Pois só vai entrar nas classes blueprints na criação do app
-    """
+
+   
     from routes.webhook.pagamentos import pagamentos
     app.register_blueprint(pagamentos)
     from routes.cadastro.cadastro import cadastro
@@ -46,5 +56,6 @@ def create_app():
     return app
 
 app = create_app()
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

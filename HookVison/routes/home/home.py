@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, session, redirect, url_for
-from classes.dashboard.tabela import Tabela
+from controllers.dashboard.tabela import Tabela
 
 home = Blueprint('home', __name__)
 

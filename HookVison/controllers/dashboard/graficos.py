@@ -1,4 +1,4 @@
-from classes.database.database import Pagamentos
+from database.database import Pagamentos
 from sqlalchemy import func, extract
 from datetime import timedelta, datetime
 from flask_babel import _

@@ -1,7 +1,7 @@
 from flask import Blueprint, request
-from classes.webhooks.pagamentos import Pagamento
-from classes.database.database import db, Pagamentos
-from classes.envia_email.gmail import envia_email
+from controllers.webhooks.pagamentos import Pagamento
+from database.database import db, Pagamentos
+from controllers.envia_email.gmail import envia_email
 from datetime import datetime, timedelta
 import json
 

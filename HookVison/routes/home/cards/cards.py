@@ -1,6 +1,6 @@
 from flask import Blueprint, session, jsonify
-from classes.dashboard.graficos import Graficos
-from classes.dashboard.counts import Counts
+from controllers.dashboard.graficos import Graficos
+from controllers.dashboard.counts import Counts
 
 
 cards = Blueprint('cards', __name__)

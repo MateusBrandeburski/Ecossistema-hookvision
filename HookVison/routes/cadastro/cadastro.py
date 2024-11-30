@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, url_for, redirect, session
 from validate_email import validate_email
 from flask_bcrypt import Bcrypt
-from classes.database.database import db, Usuarios
+from database.database import db, Usuarios
 from sqlalchemy.exc import IntegrityError
 from datetime import datetime, timedelta
 import os

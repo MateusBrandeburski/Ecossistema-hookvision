@@ -1,6 +1,6 @@
 from flask import Blueprint, session, render_template, redirect, url_for, request, flash
 from flask_bcrypt import Bcrypt
-from classes.database.database import Usuarios
+from database.database import Usuarios
 from flask_babel import _
 
 bcrypt = Bcrypt()

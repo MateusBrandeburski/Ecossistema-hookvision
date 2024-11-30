@@ -1,5 +1,5 @@
 from flask import Blueprint, session, jsonify, request
-from classes.dashboard.tabela import Tabela
+from controllers.dashboard.tabela import Tabela
 
 
 table = Blueprint('table', __name__)
