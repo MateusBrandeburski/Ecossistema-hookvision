@@ -5,10 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>HookVision</title>
 
-<link rel="preload" href="{{ url_for('static', filename='js/graficoPagamentos.js') }}"importance="high">
-<link rel="preload" href="{{ url_for('static', filename='js/graficoTotal.js') }}"importance="high">
-<link rel="preload" href="{{ url_for('static', filename='js/graficoLucroPerdas.js') }}"importance="high">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}" importance="high">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/apexcharts" as="script" importance="high">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 <link rel="icon" href="{{ url_for('static', filename='image/webhook-logo2.jpg') }}">
 
 </head>
@@ -118,14 +117,13 @@
 <!-- fim dp footer -->
 
 
-
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{ url_for('static', filename='js/graficoPagamentos.js') }}" importance="high"></script>
 <script src="{{ url_for('static', filename='js/graficoTotal.js') }}" importance="high"></script>
 <script src="{{ url_for('static', filename='js/graficoLucroPerdas.js') }}" importance="high"></script>
 <script src="{{ url_for('static', filename='js/api/total30.js') }}" importance="high"></script>
 <script src="{{ url_for('static', filename='js/api/dataTable.js') }}" importance="high"></script>
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- <script src="{{ url_for('static', filename='js/languageSwitcher.js') }}" importance="high"></script> -->
 </body>
 </html>

@@ -13,7 +13,8 @@ cadastro = Blueprint('cadastro', __name__, template_folder='templates')
 # rota que renderiza a página de cadastro
 @cadastro.route('/cadastro')
 def register():
-    return render_template('cadastro/cadastro.html')
+    language = session.get('lang', 'en')
+    return render_template('cadastro/cadastro.html', lang=language)
 
 # rota que processa o cadastro.
 @cadastro.route('/processa-cadastro', methods=['POST'])

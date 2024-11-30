@@ -3,23 +3,38 @@ from flask_babel import Babel
 from flask_migrate import Migrate
 from database.database import db
 from datetime import timedelta
+from routes.webhook.pagamentos import pagamentos
+from routes.cadastro.cadastro import cadastro
+from routes.login.login import login
+from routes.langs.langs import langs
+from routes.home.tabela.tabela import table
+from routes.home.cards.cards import cards
+from routes.home.home import home
 import click
 from flask.cli import with_appcontext
 import os
 
+app = Flask(__name__, template_folder='views')
+
+app.secret_key = "M4T3usBrnd3"
+app.permanent_session_lifetime = timedelta(minutes=1440)
+
+app.config['BABEL_DEFAULT_LOCALE'] = 'en'  
+app.config['BABEL_SUPPORTED_LOCALES'] = ['pt_BR', 'en']  
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://root:nununflask12@localhost:5432/webhook"
+
+
+app.register_blueprint(pagamentos)
+app.register_blueprint(cadastro)
+app.register_blueprint(login)
+app.register_blueprint(langs)
+app.register_blueprint(table)
+app.register_blueprint(home)
+app.register_blueprint(cards)
+
 def create_app():
-    app = Flask(__name__, template_folder='views')
-    app.secret_key = "M4T3usBrnd3"
-    app.permanent_session_lifetime = timedelta(minutes=1440)
-
-
-    app.config['BABEL_DEFAULT_LOCALE'] = 'en'  
-    app.config['BABEL_SUPPORTED_LOCALES'] = ['pt_BR', 'en']  
-    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://root:nununflask12@localhost:5432/webhook"
-
     db.init_app(app)
     migrate = Migrate(app, db)
-
 
     @click.command("seed-db")
     @with_appcontext
@@ -36,22 +51,6 @@ def create_app():
         return session.get('lang', 'en')
     
     babel.init_app(app, locale_selector=get_locale)
-
-   
-    from routes.webhook.pagamentos import pagamentos
-    app.register_blueprint(pagamentos)
-    from routes.cadastro.cadastro import cadastro
-    app.register_blueprint(cadastro)
-    from routes.login.login import login
-    app.register_blueprint(login)
-    from routes.langs.langs import langs
-    app.register_blueprint(langs)
-    from routes.home.tabela.tabela import table
-    app.register_blueprint(table)
-    from routes.home.home import home
-    app.register_blueprint(home)
-    from routes.home.cards.cards import cards
-    app.register_blueprint(cards)
 
     return app
 
