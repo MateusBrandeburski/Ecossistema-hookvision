@@ -1,10 +1,12 @@
 services:
   db:
     image: postgres:latest 
+    env_file:
+      - .env    
     environment:
-      POSTGRES_DB: ${DB}        
-      POSTGRES_USER: ${USER}    
-      POSTGRES_PASSWORD: ${PASSWORD} 
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - db_data:/var/lib/postgresql/data 
       - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql 
@@ -18,11 +20,13 @@ services:
     build:
       context: ./HookVison
       dockerfile: Dockerfile
+    env_file:
+      - .env
     environment:      
-      - POSTGRES_DB= ${DB}        
-      - POSTGRES_USER= ${USER}    
-      - POSTGRES_PASSWORD= ${PASSWORD} 
-      - URL_DB=${URL_DB}  # Variável usada no Flask (SETA SSIM: NOME DA VARIAVEL DO JEITO QUE É CHAMADA NO PROJETO E VARIAVEL QUE VEM DA ENV)
+      - POSTGRES_DB= ${POSTGRES_DB}       
+      - POSTGRES_USER= ${POSTGRES_USER}    
+      - POSTGRES_PASSWORD= ${POSTGRES_PASSWORD}
+      - URL_DB=${URL_DB}
       - SECRET_KEY_COOKIE=${SECRET_KEY_COOKIE}
     ports:
       - "5000:5000"
@@ -36,6 +40,8 @@ services:
     build:
       context: ./lumem-webhook-api
       dockerfile: Dockerfile
+    env_file:
+      - .env
     ports:
       - "8000:8000"
     depends_on:

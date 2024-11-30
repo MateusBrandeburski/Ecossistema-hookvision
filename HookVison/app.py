@@ -7,7 +7,7 @@ import os
 app = Flask(__name__, template_folder='views')
 
 # secret_key
-app.secret_key = os.getenv('SECRET_KEY_COOKIE')
+app.secret_key = "M4T3usBrnd3"
 app.permanent_session_lifetime = timedelta(minutes=1440)
 
 # Configuração do Flask-Babel
@@ -21,7 +21,7 @@ def get_locale():
 
 
 def create_app():
-    app.config['SQLALCHEMY_DATABASE_URI'] = f"sdasdasdas"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://root:nununflask12@db:5432/webhook"
     db.init_app(app)
     
     babel.init_app(app, locale_selector=get_locale)

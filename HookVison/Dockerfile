@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Instalar as dependências do Python
 COPY requirements.txt .
 RUN pip install --upgrade pip && pip install -r requirements.txt
+RUN pybabel compile -d translations
 
 # Expor a porta 5000 para o Flask
 EXPOSE 5000

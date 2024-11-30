@@ -10,4 +10,5 @@ Instruções para lembrar quando for dada manutenção neste projeto.
     request.endpoint in ['cadastro.register']
 
 
-2)
+2) Buildar lib babel 
+    pybabel compile -d translations

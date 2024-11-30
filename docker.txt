@@ -1,0 +1,14 @@
+docker compose down --volumes --remove-orphans
+docker rmi $(docker images -q) --force
+docker builder prune --all --force
+docker volume prune --force
+docker network prune --force
+
+
+docker run -d \
+  --name postgres_webhook \
+  -e POSTGRES_DB=webhook \
+  -e POSTGRES_USER=root \
+  -e POSTGRES_PASSWORD=nununflask12 \
+  -p 5432:5432 \
+  postgres:latest
