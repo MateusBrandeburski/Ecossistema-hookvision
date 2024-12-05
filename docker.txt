@@ -1,3 +1,9 @@
+# Comandos úteis
+
+docker stop $(docker ps -q)
+docker rm $(docker ps -a -q)
+docker rmi $(docker images -q)
+
 docker compose down --volumes --remove-orphans
 docker rmi $(docker images -q) --force
 docker builder prune --all --force
@@ -5,10 +11,11 @@ docker volume prune --force
 docker network prune --force
 
 
+# rodar postgres rapidamente (precisa colocar as credenciais)
 docker run -d \
   --name postgres_webhook \
-  -e POSTGRES_DB=webhook \
-  -e POSTGRES_USER=root \
-  -e POSTGRES_PASSWORD=nununflask12 \
+  -e POSTGRES_DB= \
+  -e POSTGRES_USER= \
+  -e POSTGRES_PASSWORD= \
   -p 5432:5432 \
   postgres:latest
