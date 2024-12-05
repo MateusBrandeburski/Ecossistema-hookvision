@@ -9,6 +9,7 @@ from routes.login.login import login
 from routes.langs.langs import langs
 from routes.home.tabela.tabela import table
 from routes.home.cards.cards import cards
+from middlewares.migrations_seed import run_flask_commands
 from routes.home.home import home
 import click
 from flask.cli import with_appcontext
@@ -21,7 +22,7 @@ app.permanent_session_lifetime = timedelta(minutes=1440)
 
 app.config['BABEL_DEFAULT_LOCALE'] = 'en'  
 app.config['BABEL_SUPPORTED_LOCALES'] = ['pt_BR', 'en']  
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://root:nununflask12@localhost:5432/webhook"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://root:nununflask12@db:5432/webhook"
 
 
 app.register_blueprint(pagamentos)
@@ -57,4 +58,6 @@ def create_app():
 app = create_app()
 
 if __name__ == '__main__':
+    run_flask_commands()
     app.run(host='0.0.0.0', port=5000, debug=True)
+
