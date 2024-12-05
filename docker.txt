@@ -12,3 +12,5 @@ docker run -d \
   -e POSTGRES_PASSWORD=nununflask12 \
   -p 5432:5432 \
   postgres:latest
+
+

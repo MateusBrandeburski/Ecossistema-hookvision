@@ -17,6 +17,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt .
 RUN pip install --upgrade pip && pip install -r requirements.txt
 RUN pybabel compile -d translations
+RUN rm -rf migrations
+
 
 # Expor a porta 5000 para o Flask
 EXPOSE 5000
