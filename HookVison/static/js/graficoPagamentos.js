@@ -1,5 +1,4 @@
 async function carregarDadosDoGrafico() {
-
   const dadosMockados = {
     acesso_liberado: { total: 34, label: "Released" },
     acesso_bloqueado: { total: 33, label: "Blocked" },
@@ -7,15 +6,8 @@ async function carregarDadosDoGrafico() {
   };
 
   const obterDadosReais = async () => {
-    try {
-      const resposta = await fetch("/grafico-status");
-      if (!resposta.ok) throw new Error(`HTTP status ${resposta.status}`);
-      return await resposta.json();
-    } catch (erro) {
-      // console.error(erro);
-      return null;
-    }
-
+    const resposta = await fetch("/grafico-status");
+    return await resposta.json();
   };
 
   const criarGrafico = (dados) => {
@@ -51,7 +43,6 @@ async function carregarDadosDoGrafico() {
 
   const dadosReais = await obterDadosReais();
   if (dadosReais) {
-
     chart.updateSeries([
       dadosReais.acesso_liberado.total,
       dadosReais.acesso_bloqueado.total,
@@ -65,8 +56,7 @@ async function carregarDadosDoGrafico() {
         dadosReais.acesso_negado.label,
       ],
     });
-
   }
 }
 
-carregarDadosDoGrafico();
+await carregarDadosDoGrafico();
