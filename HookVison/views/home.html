@@ -16,7 +16,11 @@
 <header class="bg-white p-1 shadow">
       <nav class="container-navbar">
         <div class="canto-esquerdo">
-            <img class="logo-nav" src="{{ url_for('static', filename='image/webhook-logo2.jpg') }}" alt="logo-webhook">
+          <!-- <picture>
+            <source srcset="{{ url_for('static', filename='image/webhook-logo2.webp') }}" type="image/webp">
+            <img class="logo-nav" src="{{ url_for('static', filename='image/webhook-logo2.jpg') }}" alt="logo-webhook" loading="eager">
+          </picture>-->
+            <img class="logo-nav" src="{{ url_for('static', filename='image/webhook-logo2.jpg') }}" alt="logo-webhook" loading="eager">
             <span class="title-nav">HookVision 3.0</span>
           </a>
         </div>
