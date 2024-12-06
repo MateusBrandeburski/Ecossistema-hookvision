@@ -21,3 +21,4 @@ docker run -d \
   postgres:latest
 
 
+curl -X POST http://localhost:8000/web-hook -H "Authorization: Bearer 12345"
