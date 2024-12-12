@@ -13,7 +13,7 @@ from middlewares.migrations_seed import run_flask_commands
 from routes.home.home import home
 import click
 from flask.cli import with_appcontext
-import os
+
 
 app = Flask(__name__, template_folder='views')
 
@@ -22,7 +22,7 @@ app.permanent_session_lifetime = timedelta(minutes=1440)
 
 app.config['BABEL_DEFAULT_LOCALE'] = 'en'  
 app.config['BABEL_SUPPORTED_LOCALES'] = ['pt_BR', 'en']  
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://root:nununflask12@db:5432/webhook"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://root:nununflask12@localhost:5432/webhook"
 
 
 app.register_blueprint(pagamentos)

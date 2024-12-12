@@ -7,6 +7,8 @@ const textoBusca = document.getElementById('textoBusca');
 let debounceTimer;
 
 function fetchPaginatedData() {
+    renderLoadingTable(); // Renderiza a tabela com o efeito de carregamento antes de buscar os dados
+
     fetch(`/table?search=${encodeURIComponent(search)}&limit=${limit}&offset=${offset}`)
         .then(response => {
             if (!response.ok) {
@@ -23,7 +25,6 @@ function fetchPaginatedData() {
         });
 }
 
-
 // Lida com a digitação do usuário, realizando busca com debounce
 textoBusca.addEventListener('input', (event) => {
     search = event.target.value.trim();
@@ -37,12 +38,10 @@ textoBusca.addEventListener('input', (event) => {
     }
 });
 
-
 function nextPage() {
     offset += limit;
     fetchPaginatedData();
 }
-
 
 function prevPage() {
     if (offset >= limit) {  // Impede que o offset seja negativo
@@ -51,45 +50,64 @@ function prevPage() {
     }
 }
 
-
 function togglePrevButton() {
     const prevButton = document.querySelector("#prev-button");
     prevButton.disabled = (offset === 0);  // Desabilita o botão se o offset for 0
 }
 
-
-
-function renderTable(data) {
-
+function renderLoadingTable() {
     const tableBody = document.querySelector("#table-body");
-    tableBody.innerHTML = "";  // Limpa os dados anteriores
+    tableBody.innerHTML = ""; // Limpa o conteúdo atual da tabela
 
-    if (data.length === 0) {
-        const row = document.createElement("tr");  // Criando uma linha para a mensagem
-        const cell = document.createElement("td");  // Criando uma célula
-        cell.colSpan = 8;  // Faz a célula ocupar todas as colunas da tabela
-        cell.innerHTML = "Nenhum resultado encontrado";
-        cell.classList.add('no-results');   // Mensagem a ser exibida
-        row.appendChild(cell);  // Adiciona a célula à linha
-        tableBody.appendChild(row);  // Adiciona a linha ao corpo da tabela
-    } else {
-        // Caso contrário, renderiza os dados
-        data.forEach(item => {
-            const row = document.createElement("tr");
-            row.innerHTML = `
-                <td>${item.nome}</td>
-                <td>${item.email}</td>
-                <td>${item.status}</td>
-                <td>${item.status_no_sistema}</td>
-                <td>${item.valor}</td>
-                <td>${item.forma_pagamento}</td>
-                <td>${item.parcelas}</td>
-                <td>${item.data}</td>
-            `;
-            tableBody.appendChild(row);
-        });
+    for (let i = 0; i < 10; i++) { // Renderiza 10 linhas de carregamento
+        const row = document.createElement("tr");
+        row.classList.add('loading'); // Aplica a classe de carregamento
+
+        row.innerHTML = `
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        `; // Linhas vazias para o efeito do loader
+
+        tableBody.appendChild(row);
     }
 }
+
+// function renderTable(data) {
+//     const tableBody = document.querySelector("#table-body");
+//     tableBody.innerHTML = "";  // Limpa os dados anteriores
+
+//     if (data.length === 0) {
+//         const row = document.createElement("tr");  // Criando uma linha para a mensagem
+//         const cell = document.createElement("td");  // Criando uma célula
+//         cell.colSpan = 8;  // Faz a célula ocupar todas as colunas da tabela
+//         cell.innerHTML = "Nenhum resultado encontrado";
+//         cell.classList.add('no-results');   // Mensagem a ser exibida
+//         row.appendChild(cell);  // Adiciona a célula à linha
+//         tableBody.appendChild(row);  // Adiciona a linha ao corpo da tabela
+//     } else {
+//         // Caso contrário, renderiza os dados
+//         data.forEach(item => {
+//             const row = document.createElement("tr");
+//             row.innerHTML = `
+//                 <td>${item.nome}</td>
+//                 <td>${item.email}</td>
+//                 <td>${item.status}</td>
+//                 <td>${item.status_no_sistema}</td>
+//                 <td>${item.valor}</td>
+//                 <td>${item.forma_pagamento}</td>
+//                 <td>${item.parcelas}</td>
+//                 <td>${item.data}</td>
+//             `;
+//             tableBody.appendChild(row);
+//         });
+//     }
+// }
 
 document.querySelector("#next-button").addEventListener("click", nextPage);
 document.querySelector("#prev-button").addEventListener("click", prevPage);
