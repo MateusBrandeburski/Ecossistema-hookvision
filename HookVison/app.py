@@ -22,8 +22,7 @@ app.permanent_session_lifetime = timedelta(minutes=1440)
 
 app.config['BABEL_DEFAULT_LOCALE'] = 'en'  
 app.config['BABEL_SUPPORTED_LOCALES'] = ['pt_BR', 'en']  
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://root:nununflask12@db:5432/webhook"
-
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://root:nununflask12@192.168.0.10:5432/webhook"
 
 app.register_blueprint(pagamentos)
 app.register_blueprint(cadastro)
@@ -58,6 +57,6 @@ def create_app():
 app = create_app()
 
 if __name__ == '__main__':
-    run_flask_commands()
+    # run_flask_commands()
     app.run(host='0.0.0.0', port=5000, debug=True)
 

@@ -131,4 +131,4 @@ async function carregarDadosGraficoLucroPerdas() {
   }
 }
 
-await carregarDadosGraficoLucroPerdas();
+carregarDadosGraficoLucroPerdas();

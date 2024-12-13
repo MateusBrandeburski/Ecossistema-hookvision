@@ -136,4 +136,4 @@ async function carregarDadosDoGrafico() {
   }
 }
 
-await carregarDadosDoGrafico();
+carregarDadosDoGrafico();
