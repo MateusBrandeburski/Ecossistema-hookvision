@@ -12,6 +12,8 @@ def index():
 
     ip_cliente = request.remote_addr
     user_agent = request.headers.get('User-Agent')
+    
+    # return ip_cliente, user_agent
 
     enviar_dados_para_api(ip_cliente, user_agent)
 

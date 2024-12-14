@@ -20,6 +20,7 @@ def enviar_dados_para_api(ip, user_agent):
                        (ip, datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
 
         with httpx.Client() as client:
-            response = client.post(f'http://localhost:8000/api/enviar-email?ip={ip}&user_agent={user_agent}')
+            url = "hookvision.mateusbrandeburski.com"
+            response = client.post(f'http://localhost:8000/api/enviar-email?ip={ip}&user_agent={user_agent}&url={url}')
             print(f"Status da resposta: {response.status_code}")
             print(f"Resposta da API: {response.text}")
