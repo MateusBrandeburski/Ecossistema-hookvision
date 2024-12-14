@@ -7,8 +7,8 @@ docker rmi $(docker images -q)
 docker compose down --volumes --remove-orphans
 docker rmi $(docker images -q) --force
 docker builder prune --all --force
-docker volume prune --force
-docker network prune --force
+docker volume prune --force CUIDADO
+docker network prune --force CUIDADO
 
 
 # rodar postgres rapidamente (precisa colocar as credenciais)
