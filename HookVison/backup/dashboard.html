@@ -35,12 +35,11 @@
         </div>
     </div>
     
-    <div class="table-responsive mt-4">
-        <h1 class="display-4 fw-bold text-black p-3 text-white text-center" id="mensagemSemRegistro" style="display: none;">
-            {{ _('Nenhum registro encontrado.') }}
-        </h1>
-
-        <table id="tableBody" class="table table-striped table-bordered border-black d-none d-md-table" style="background-color: rgb(255, 255, 255); border-radius: 3px;">
+    <div class="table-responsive" style="border-radius: 3px;">
+        <table id="tableBody" class="table table-striped table-bordered border-black" style="background-color: rgb(255, 255, 255); border-radius: 3px;">
+            <h1 class="display-4 fw-bold text-black p-3 text-white text-center" id="mensagemSemRegistro" style="display: none;">
+                {{ _('Nenhum registro encontrado.') }}
+            </h1>
             <thead class="thead-default">
                 <tr>
                     <th>{{ _('Nome') }}</th>
@@ -53,14 +52,12 @@
                     <th>{{ _('Data e hora') }}</th>
                 </tr>
             </thead>
-            <tbody id="table-body"></tbody>
+            <tbody id="table-body">
+            </tbody>
         </table>
     </div>
 
-
-    <div id="mobile-table" class="d-block d-md-none"></div>
-
-    <div class="text-end mt-3">
+    <div class="text-end">
         <button class="btn btn-light me-2 btn-table" id="prev-button">{{ _('Anterior') }}</button>
         <button class="btn btn-light btn-table" id="next-button">{{ _('Próximo') }}</button>
     </div>

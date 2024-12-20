@@ -7,14 +7,11 @@ home = Blueprint('home', __name__)
 def index():
     if not session.get('usuario_logado', None):
         return redirect(url_for('login.index'))
+         
+    real_ip = request.headers.get('CF-Connecting-IP', 'IP não encontrado')
+    host = request.headers.get('Host', 'Host não encontrado')
+    user_agent = request.headers.get('User-Agent', 'User-Agent não encontrado') 
+    enviar_dados_para_api(real_ip, user_agent, host)
     
     language = session.get('lang', 'en')
-
-    ip_cliente = request.remote_addr
-    user_agent = request.headers.get('User-Agent')
-    
-    # return ip_cliente, user_agent
-
-    enviar_dados_para_api(ip_cliente, user_agent)
-
     return render_template('home/dashboard/dashboard.html', lang=language)
